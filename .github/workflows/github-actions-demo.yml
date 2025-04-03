@@ -1,42 +1,43 @@
-name: CI/CD Pipeline
+# name: CI/CD Pipeline
 
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+# on:
+#   push:
+#     branches:
+#       - main
+#   pull_request:
+#     branches:
+#       - main
 
-defaults:
-  run:
-    working-directory: ./src
+# defaults:
+#   run:
+#     working-directory: ./src
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout Code
+#         uses: actions/checkout@v4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '22'
+#       - name: Set up Node.js
+#         uses: actions/setup-node@v4
+#         with:
+#           node-version: "22"
 
-      - name: Install Dependencies
-        run: npm install
+#       - name: Install Dependencies
+#         run: npm install
 
-      - name: Build Application
-        run: npm run build
+#       - name: Build Application
+#         run: npm run build
 
-      - name: Check
-        run: |
-          pwd
-          ls -l
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Deploy to Environment
-        run: echo "Deploying application..."
+#       - name: Check
+#         run: |
+#           pwd
+#           ls -l
+
+#   # deploy:
+#   #   runs-on: ubuntu-latest
+#   #   needs: build
+#   #   steps:
+#   #     - name: Deploy to Environment
+#   #       run: echo "Deploying application..."
