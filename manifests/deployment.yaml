@@ -15,7 +15,7 @@ spec:
         app: frontend
     spec:
       containers:
-      - image: asia-southeast1-docker.pkg.dev/web-app-hosting-lehai/web-frontend-repo/frontend-react-app:v0.0.4
+      - image: asia-southeast1-docker.pkg.dev/web-app-hosting-lehai/web-frontend-repo/frontend-react-app:v0.0.3
         imagePullPolicy: Always
         name: frontend
         ports:
