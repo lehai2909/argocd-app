@@ -6,7 +6,7 @@ on:
 
 env:
   PROJECT_ID: "web-app-hosting-lehai" # TODO: update to your Google Cloud project ID
-  VERSION: ga-0.0.2
+  VERSION: ga-0.0.3
 
 defaults:
   run:
@@ -35,6 +35,8 @@ jobs:
       - id: "gcloud"
         name: "gcloud"
         run: gcloud secrets versions access 1 --secret="github-action-secrets"
+
+      - run: cat package.json
 
       - name: "Docker Auth"
         uses: "docker/login-action@v3"
