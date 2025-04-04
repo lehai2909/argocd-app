@@ -6,7 +6,7 @@ on:
 
 env:
   PROJECT_ID: "web-app-hosting-lehai" # TODO: update to your Google Cloud project ID
-  VERSION: ga-0.0.3
+  VERSION: ga-0.0.4
 
 defaults:
   run:
