@@ -54,3 +54,15 @@ jobs:
             .
             
           docker push "${DOCKER_TAG}"
+
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          repository: lehai2909/argocd-infra
+          token: ${{ secrets.GIT_TOKEN }}
+          ref: "main"
+
+      - name: Verify
+        run: |
+          sed -i "s/^ *image:.*/        image: asia-southeast1-docker.pkg.dev\/web-app-hosting-lehai\/web-frontend-repo\/frontend-react-app:${VERSION}/" manifests/deployment.yaml
+          cat manifests/deployment.yaml
