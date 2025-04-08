@@ -20,6 +20,7 @@ jobs:
         with:
           repository: lehai2909/argocd-infra
           token: "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"
+          ref: "main"
 
       - name: Verify
         run: ls -l
