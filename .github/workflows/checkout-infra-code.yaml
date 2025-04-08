@@ -25,14 +25,15 @@ jobs:
           token: "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"
           ref: "main"
 
-      - uses: actions-hub/kubectl@master
-        with:
-          args: apply -f manifests/deployment.yaml
+      # - uses: actions-hub/kubectl@master
+      #   with:
+      #     args: apply -f manifests/deployment.yaml
 
-      # - name: Verify
-      #   run: |
-      #     ls -l
-      #     sed -i 's/^ *image:.*/  image: 2.0.0/' config.yaml
+      - name: Verify
+        run: |
+          curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+          sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+          kubectl version --client
 
     #   - name: Set up Node.js
     #     uses: actions/setup-node@v4
