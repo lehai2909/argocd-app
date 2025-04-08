@@ -1,4 +1,4 @@
-name: Build Push Docker images to ARTIFACT REGISTRY
+name: Build push Docker images to Google Artifact Registry
 on:
   push:
     branches:
