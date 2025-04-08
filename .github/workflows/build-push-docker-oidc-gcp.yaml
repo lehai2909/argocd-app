@@ -6,7 +6,7 @@ on:
 
 env:
   PROJECT_ID: "web-app-hosting-lehai" # TODO: update to your Google Cloud project ID
-  VERSION: ga-0.0.5
+  VERSION: ga-0.0.6
 
 permissions:
   id-token: write
@@ -64,12 +64,12 @@ jobs:
           repository: lehai2909/argocd-infra
           token: ${{ secrets.GIT_TOKEN }}
           ref: "main"
-      - name: verify
-        run: |
-          pwd
-          ls -l
-
-      # - name: Verify
+      # - name: verify
       #   run: |
-      #     sed -i "s/^ *image:.*/        image: asia-southeast1-docker.pkg.dev\/web-app-hosting-lehai\/web-frontend-repo\/frontend-react-app:${VERSION}/" manifests/deployment.yaml
-      #     cat manifests/deployment.yaml
+      #     pwd
+      #     ls -l
+
+      - name: Verify
+        run: |
+          sed -i "s/^ *image:.*/        image: asia-southeast1-docker.pkg.dev\/web-app-hosting-lehai\/web-frontend-repo\/frontend-react-app:${VERSION}/" manifests/deployment.yaml
+          cat manifests/deployment.yaml
