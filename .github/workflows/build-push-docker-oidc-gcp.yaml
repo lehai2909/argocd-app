@@ -64,12 +64,14 @@ jobs:
           repository: lehai2909/argocd-infra
           token: ${{ secrets.GIT_TOKEN }}
           ref: "main"
-      # - name: verify
-      #   run: |
-      #     pwd
-      #     ls -l
 
       - name: Verify
         run: |
           sed -i "s/^ *image:.*/        image: asia-southeast1-docker.pkg.dev\/web-app-hosting-lehai\/web-frontend-repo\/frontend-react-app:${VERSION}/" manifests/deployment.yaml
           cat manifests/deployment.yaml
+
+      - name: Commit and Push
+        run: |
+          git add .
+          git commit -m "Update image to ${VERSION}"
+          git push origin main
