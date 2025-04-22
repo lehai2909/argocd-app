@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {useState} from "react";
 import Heading from "./components/Heading.jsx";
 import Items from "./components/Items.jsx";
 import Subscribe from "./components/Subscribe.jsx";
@@ -7,7 +7,7 @@ import "./index.css";
 function App() {
   //state to assure only authenticated user can see content
   const [visible, setVisible] = useState(false);
-
+  console.log("Printing env var:", import.meta.env.BACKEND_URL);
   return (
     <>
       <SignIn
@@ -20,10 +20,11 @@ function App() {
         }}
       />
       <Heading />
-      <Subscribe 
+      <Subscribe
         onSignIn={() => {
           setVisible(true);
-        }}/>
+        }}
+      />
       <Items visible={visible} />
     </>
   );
