@@ -8,6 +8,8 @@ function App() {
   //state to assure only authenticated user can see content
   const [visible, setVisible] = useState(false);
   console.log("Printing env var:", import.meta.env.BACKEND_URL);
+  console.log("Printing import.meta.env.PROD env var:", import.meta.env.PROD);
+  console.log("Printing import.meta.env.MODE env var:", import.meta.env.MODE);
   return (
     <>
       <SignIn
