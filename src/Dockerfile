@@ -44,7 +44,7 @@ FROM nginx:alpine
 RUN rm -rf /usr/share/nginx/html/*
 
 # Copy built React files
-COPY --from=build /app/build /usr/share/nginx/html
+COPY --from=build /app/dist /usr/share/nginx/html
 
 # Optional: custom Nginx config (for SPA routing)
 # COPY nginx.conf /etc/nginx/conf.d/default.conf
