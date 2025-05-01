@@ -44,7 +44,7 @@ jobs:
 
       - name: "Build and push Docker container"
         run: |-
-          DOCKER_TAG="asia-southeast1-docker.pkg.dev/web-app-hosting-lehai/web-frontend-repo/frontend-react-app:${VERSION}"
+          DOCKER_TAG="asia-southeast1-docker.pkg.dev/heroic-night-453607-n0/web-app-repository/frontend:${VERSION}"
 
           docker build \
             --tag "${DOCKER_TAG}" \
