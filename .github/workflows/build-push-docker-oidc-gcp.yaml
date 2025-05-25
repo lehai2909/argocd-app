@@ -3,10 +3,9 @@ on:
   push:
     branches:
       - main
-
 env:
   PROJECT_ID: "org-admin-project-458013" # TODO: update to your Google Cloud project ID
-  VERSION: ga-0.0.1
+  VERSION: ga-0.0.2
 
 permissions:
   id-token: write
@@ -44,7 +43,7 @@ jobs:
 
       - name: "Build and push Docker container"
         run: |-
-          DOCKER_TAG="asia-southeast1-docker.pkg.dev/heroic-night-453607-n0/web-app-repository/frontend:${VERSION}"
+          DOCKER_TAG="asia-southeast1-docker.pkg.dev/org-tools-458804/web-app-helm-repo/frontend-image:${VERSION}"
 
           docker build \
             --tag "${DOCKER_TAG}" \
