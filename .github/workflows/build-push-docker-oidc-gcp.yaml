@@ -5,7 +5,7 @@ on:
       - main
 env:
   PROJECT_ID: "org-admin-project-458013" # TODO: update to your Google Cloud project ID
-  VERSION: ga-0.0.2
+  VERSION: ga-0.0.3
 
 permissions:
   id-token: write
