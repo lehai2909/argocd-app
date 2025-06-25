@@ -5,7 +5,7 @@ import Subscribe from "./components/Subscribe.jsx";
 import SignIn from "./components/SignIn.jsx";
 import "./index.css";
 function App() {
-  //state to assure only authenticated user can see content
+  //state to assure only authenticated user can see content 12345677
   const [visible, setVisible] = useState(false);
   console.log("Printing env var:", import.meta.env.VITE_BACKEND_URL_PROD);
   console.log("Printing import.meta.env.PROD env var:", import.meta.env.PROD);
