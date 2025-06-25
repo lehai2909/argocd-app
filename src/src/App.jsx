@@ -4,8 +4,9 @@ import Items from "./components/Items.jsx";
 import Subscribe from "./components/Subscribe.jsx";
 import SignIn from "./components/SignIn.jsx";
 import "./index.css";
-function App() {
+function App() { 
   //state to assure only authenticated user can see content 12345677
+  const a = 5;
   const [visible, setVisible] = useState(false);
   console.log("Printing env var:", import.meta.env.VITE_BACKEND_URL_PROD);
   console.log("Printing import.meta.env.PROD env var:", import.meta.env.PROD);
