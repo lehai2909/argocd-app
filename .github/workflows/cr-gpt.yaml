@@ -16,9 +16,9 @@ jobs:
       - uses: anc95/ChatGPT-CodeReview@main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_API_KEY: ${{ env.OPENAI_API_KEY }}
           # Optional
-          LANGUAGE: Chinese
+          LANGUAGE: English
           OPENAI_API_ENDPOINT: https://api.openai.com/v1
           MODEL: gpt-3.5-turbo # https://platform.openai.com/docs/models
           PROMPT: 'please review the code in this pull request'
