@@ -99,7 +99,7 @@ jobs:
               r = requests.get(comments_url, headers=headers)
               if r.status_code != 200:
                   return False
-              return any('copilot' in comment['body'].lower() for comment in r.json())
+              return any('lgtm' in comment['body'].lower() for comment in r.json())
 
           org = os.environ['ORG_NAME']
           repos = get_repos(org)
@@ -108,15 +108,15 @@ jobs:
 
           for repo in repos:
               prs = get_pull_requests(org, repo)
-              print(prs)
-          #     for pr in prs:
-          #         if has_copilot_comments(org, repo, pr['number']):
-          #             matching_prs.append(f'- [{repo}] PR #{pr['number']}: {pr['title']} ({pr['html_url']})')
+              for pr in prs:
+                  if has_copilot_comments(org, repo, pr['number']):
+                      matching_prs.append(f'- [{repo}] PR #{pr['number']}: {pr['title']} ({pr['html_url']})')
 
-          # if not matching_prs:
-          #     body = 'No PRs with Copilot comments found.'
-          # else:
-          #     body = 'Pull Requests with Copilot Comments:\n\n' + '\n'.join(matching_prs)
+          if not matching_prs:
+              body = 'No PRs with Copilot comments found.'
+          else:
+              body = 'Pull Requests with Copilot Comments:\n\n' + '\n'.join(matching_prs)
+          print(body)
 
           # msg = MIMEText(body)
           # msg['Subject'] = f'GitHub Copilot PRs Report ({org})'
