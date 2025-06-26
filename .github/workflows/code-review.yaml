@@ -106,8 +106,9 @@ jobs:
           print(repos)
           matching_prs = []
 
-          # for repo in repos:
-          #     prs = get_pull_requests(org, repo)
+          for repo in repos:
+              prs = get_pull_requests(org, repo)
+              print(prs)
           #     for pr in prs:
           #         if has_copilot_comments(org, repo, pr['number']):
           #             matching_prs.append(f'- [{repo}] PR #{pr['number']}: {pr['title']} ({pr['html_url']})')
