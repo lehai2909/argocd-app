@@ -108,7 +108,7 @@ jobs:
 
           org = os.environ['ORG_NAME']
           # repos = get_repos(org)
-          repos = ['lehai-org/github-action-repo'] 
+          repos = ['github-action-repo'] 
           print(repos)
           matching_prs = []
 
