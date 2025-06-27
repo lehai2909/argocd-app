@@ -121,7 +121,7 @@ jobs:
           msg = MIMEText(body)
           msg['Subject'] = f'GitHub Copilot PRs Report ({org})'
           msg['From'] = os.environ['GMAIL_USER']
-          msg['To'] = leensea96@gmail.com  # or use dynamic address
+          msg['To'] = "leensea96@gmail.com"  # or use dynamic address
 
           with smtplib.SMTP_SSL('smtp.gmail.com', 465) as server:
               server.login(os.environ['GMAIL_USER'], os.environ['GMAIL_PASS'])
