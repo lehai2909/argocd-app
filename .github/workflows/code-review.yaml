@@ -101,29 +101,39 @@ jobs:
                   return False
               return any('lgtm' in comment['body'].lower() for comment in r.json())
 
+          def list_comments(org, repo, pr_number):
+              comments_url = f'https://api.github.com/repos/{org}/{repo}/issues/{pr_number}/comments'
+              r = requests.get(comments_url, headers=headers)
+              print(r.json())
+
           org = os.environ['ORG_NAME']
-          repos = get_repos(org)
+          # repos = get_repos(org)
+          repos = ['lehai-org/github-action-repo'] 
           print(repos)
           matching_prs = []
 
           for repo in repos:
+              print("----------------------------")
+              print(f'Checking repo: {repo}')
               prs = get_pull_requests(org, repo)
               for pr in prs:
-                  if has_copilot_comments(org, repo, pr['number']):
-                      matching_prs.append(f'- [{repo}] PR #{pr['number']}: {pr['title']} ({pr['html_url']})')
+                  print(f'Checking PR #{pr["number"]} in {repo}')
+                  list_comments(org, repo, pr['number'])
+                  # if has_copilot_comments(org, repo, pr['number']):
+                  #     matching_prs.append(f'- [{repo}] PR #{pr['number']}: {pr['title']} ({pr['html_url']})')
 
-          if not matching_prs:
-              body = 'No PRs with Copilot comments found.'
-          else:
-              body = 'Pull Requests with Copilot Comments:\n\n' + '\n'.join(matching_prs)
-          print(body)
+          # if not matching_prs:
+          #     body = 'No PRs with Copilot comments found.'
+          # else:
+          #     body = 'Pull Requests with Copilot Comments:\n\n' + '\n'.join(matching_prs)
+          # print(body)
 
-          msg = MIMEText(body)
-          msg['Subject'] = f'GitHub Copilot PRs Report ({org})'
-          msg['From'] = os.environ['GMAIL_USER']
-          msg['To'] = 'leensea96@gmail.com'  # or use dynamic address
+          # msg = MIMEText(body)
+          # msg['Subject'] = f'GitHub Copilot PRs Report ({org})'
+          # msg['From'] = os.environ['GMAIL_USER']
+          # msg['To'] = 'leensea96@gmail.com'  # or use dynamic address
 
-          with smtplib.SMTP_SSL('smtp.gmail.com', 465) as server:
-              server.login(os.environ['GMAIL_USER'], os.environ['GMAIL_PASS'])
-              server.sendmail(msg['From'], [msg['To']], msg.as_string())
+          # with smtplib.SMTP_SSL('smtp.gmail.com', 465) as server:
+          #     server.login(os.environ['GMAIL_USER'], os.environ['GMAIL_PASS'])
+          #     server.sendmail(msg['From'], [msg['To']], msg.as_string())
           "
