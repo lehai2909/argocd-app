@@ -113,7 +113,7 @@ jobs:
           matching_prs = []
 
           for repo in repos:
-              print("----------------------------")
+              print('----------------------------')
               print(f'Checking repo: {repo}')
               prs = get_pull_requests(org, repo)
               for pr in prs:
