@@ -104,7 +104,9 @@ jobs:
           def list_comments(org, repo, pr_number):
               comments_url = f'https://api.github.com/repos/{org}/{repo}/issues/{pr_number}/comments'
               r = requests.get(comments_url, headers=headers)
-              print(r.json())
+              for comment in r.json():
+                  print(f"Comment by {comment['user']['login']}: {comment['body']}")
+              
 
           org = os.environ['ORG_NAME']
           # repos = get_repos(org)
