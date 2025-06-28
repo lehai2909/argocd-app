@@ -107,7 +107,7 @@ jobs:
               r = requests.get(comments_url, headers=headers)
               for comment in r.json():
                 if comment['user']['login'] == 'lehai2909':
-                  list_comments = list_comments + 'Comment ' + comment['id'] + ' by ' + comment['user']['login'] + ': ' + comment['body'] + '\n\n'
+                  list_comments = list_comments + 'Comment ' + str(comment['id']) + ' by ' + comment['user']['login'] + ': ' + comment['body'] + '\n\n'
               return list_comments 
               
 
