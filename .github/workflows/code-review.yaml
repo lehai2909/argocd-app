@@ -123,6 +123,9 @@ jobs:
               #print('----------------------------')
               #print(f'Checking repo: {repo}')
               prs = get_pull_requests(org, repo)
+              if not prs:
+                  body += 'No open PRs found.\n\n'
+                  continue
               for pr in prs:
                   #print(f'Checking PR #{pr['number']} in {repo}')
                   #list_comments_by_copilot(org, repo, pr['number'])
