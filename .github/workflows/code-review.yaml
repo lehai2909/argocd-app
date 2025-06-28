@@ -123,6 +123,7 @@ jobs:
               #print('----------------------------')
               #print(f'Checking repo: {repo}')
               prs = get_pull_requests(org, repo)
+              print(prs)
               if not prs:
                   body += 'No open PRs found.\n\n'
                   continue
