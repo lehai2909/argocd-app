@@ -101,16 +101,16 @@ jobs:
                   return False
               return any('lgtm' in comment['body'].lower() for comment in r.json())
 
-          def list_comments(org, repo, pr_number):
+          def list_comments_by_copilot(org, repo, pr_number):
               comments_url = f'https://api.github.com/repos/{org}/{repo}/issues/{pr_number}/comments'
               r = requests.get(comments_url, headers=headers)
               for comment in r.json():
-                  print('Comment by' + comment['user']['login'] + ':' + comment['body'])
+                  print('Comment by ' + comment['user']['login'] + ':' + comment['body'])
               
 
           org = os.environ['ORG_NAME']
-          # repos = get_repos(org)
-          repos = ['github-action-repo'] 
+          repos = get_repos(org)
+          # repos = ['github-action-repo'] 
           print(repos)
           matching_prs = []
 
@@ -120,7 +120,7 @@ jobs:
               prs = get_pull_requests(org, repo)
               for pr in prs:
                   print(f'Checking PR #{pr['number']} in {repo}')
-                  list_comments(org, repo, pr['number'])
+                  list_comments_by_copilot(org, repo, pr['number'])
                   # if has_copilot_comments(org, repo, pr['number']):
                   #     matching_prs.append(f'- [{repo}] PR #{pr['number']}: {pr['title']} ({pr['html_url']})')
 
