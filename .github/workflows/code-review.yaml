@@ -42,8 +42,8 @@
 name: Fetch PRs from all repo in org and Send Email
 
 on:
-  # schedule:
-  #   - cron: "0 8 * * *" # every day at 8 AM UTC
+  schedule:
+    - cron: "0 4 * * *" # every day at 8 AM UTC
   workflow_dispatch:
 
 jobs:
