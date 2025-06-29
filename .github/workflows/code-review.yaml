@@ -43,7 +43,7 @@ name: Fetch PRs from all repo in org and Send Email
 
 on:
   schedule:
-    - cron: "0 9 * * *" # every day at 8 AM UTC
+    - cron: "30 10 * * *" # every day at 10:30 AM UTC
   workflow_dispatch:
 
 jobs:
@@ -144,7 +144,7 @@ jobs:
           msg = MIMEText(body)
           msg['Subject'] = f'GitHub Copilot PRs Report ({org})'
           msg['From'] = os.environ['GMAIL_USER']
-          msg['To'] = 'leensea96@gmail.com'  # or use dynamic address
+          msg['To'] = 'aws2lehai@gmail.com'  # or use dynamic address
 
           with smtplib.SMTP_SSL('smtp.gmail.com', 465) as server:
               server.login(os.environ['GMAIL_USER'], os.environ['GMAIL_PASS'])
