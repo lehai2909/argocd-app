@@ -44,7 +44,14 @@ repos = get_repos(org)
 print(repos)
 matching_prs = []
 body = ''
-summary_table = 'Open PRs per Repository:\n\nRepo | Open PRs\n---- | ---------\n'
+summary_table = """
+<h2>Open PRs per Repository</h2>
+<table border="1" cellpadding="4" cellspacing="0">
+  <tr>
+    <th>Repo</th>
+    <th>Open PRs</th>
+  </tr>
+"""
 repo_pr_counts = {}
 
 for repo in repos:
@@ -52,25 +59,27 @@ for repo in repos:
     repo_pr_counts[repo] = len(prs)
 
 for repo, count in repo_pr_counts.items():
-    summary_table += f'{repo} | {count}\n'
+    summary_table += f"<tr><td>{repo}</td><td>{count}</td></tr>"
+summary_table += "</table><br>"
 
-body = summary_table + '\n\n'  # Prepend table to email body
+body = summary_table  # Prepend HTML table to email body
 
 for repo in repos:
     prs = get_pull_requests(org, repo)
     if not len(prs):
         continue
     for pr in prs:
-        body += f'Repository: {repo}\n\n'
-        body += '### List of Pull Requests with lehai2909 Comments:\n\n'
-        body += f'- PR #{pr["number"]}: {pr["title"]} ({pr["html_url"]})\n\n'
-        body += list_comments_by_copilot(org, repo, pr["number"]) if list_comments_by_copilot(org, repo, pr["number"]) else 'No comments of lehai2909 found.\n\n'
-    body += '------------------------------------------\n\n'
+        body += f'<b>Repository:</b> {repo}<br>'
+        body += '<b>List of Pull Requests with lehai2909 Comments:</b><br>'
+        body += f'- PR #{pr["number"]}: {pr["title"]} (<a href="{pr["html_url"]}">{pr["html_url"]}</a>)<br>'
+        comments = list_comments_by_copilot(org, repo, pr["number"])
+        body += comments.replace('\n', '<br>') if comments else 'No comments of lehai2909 found.<br>'
+    body += '<hr>'
 
 print('Email body:')          
 print(body)
 
-msg = MIMEText(body)
+msg = MIMEText(body, "html")  # Use HTML MIME type
 msg['Subject'] = f'GitHub Copilot PRs Report ({org})'
 msg['From'] = os.environ['GMAIL_USER']
 msg['To'] = 'aws2lehai@gmail.com'  # or use dynamic address
