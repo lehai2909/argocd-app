@@ -26,9 +26,7 @@ jobs:
           pwd
           ls -la
           find . -name ".npmrc"
-          ls -la ..
-          ls -la ../..
-          ls -la ../../..
+          ls -la ~/
 
     #   - run: npm publish
     #     env:
