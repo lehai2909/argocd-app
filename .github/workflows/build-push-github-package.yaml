@@ -25,7 +25,7 @@ jobs:
         #   scope: "@lehai2909"
       #   - run: npm ci
       - run: |
-          #   cp /home/runner/work/_temp/.npmrc .
+          cp /home/runner/work/_temp/.npmrc .
           ls -la
-            #   cat .npmrc
+          cat .npmrc
     #   - run: npm publish
