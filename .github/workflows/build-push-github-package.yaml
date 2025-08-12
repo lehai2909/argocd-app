@@ -22,7 +22,9 @@ jobs:
         # Defaults to the user or organization that owns the workflow file
         #   scope: "@lehai2909"
       - run: npm ci
-      - run: cat .npmrc
+      - run: |
+          pwd
+          cat ~/.npmrc
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
