@@ -5,9 +5,9 @@ on:
       - main
 jobs:
   build:
-    # defaults:
-    #   run:
-    #     working-directory: ./src
+    defaults:
+      run:
+        working-directory: ./src
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -23,9 +23,9 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         # Defaults to the user or organization that owns the workflow file
         #   scope: "@lehai2909"
-      #   - run: npm ci
+      - run: npm ci
       - run: |
           cp /home/runner/work/_temp/.npmrc .
           ls -la
           cat .npmrc
-    #   - run: npm publish
+      - run: npm publish
