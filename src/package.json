@@ -4,6 +4,9 @@
     "type": "git",
     "url": "https://github.com/lehai2909/argocd-app.git"
   },
+  "publishConfig": {
+  "registry": "https://npm.pkg.github.com"
+},
   "private": true,
   "version": "0.0.1",
   "type": "module",
