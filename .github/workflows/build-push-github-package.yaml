@@ -5,9 +5,9 @@ on:
       - main
 jobs:
   build:
-    # defaults:
-    #   run:
-    #     working-directory: ./src
+    defaults:
+      run:
+        working-directory: ./src
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -21,15 +21,11 @@ jobs:
           registry-url: "https://npm.pkg.github.com"
         # Defaults to the user or organization that owns the workflow file
         #   scope: "@lehai2909"
-      #   - run: npm ci
+      - run: npm ci
       - run: |
-          pwd
+          cp /home/runner/work/_temp/.npmrc .
           ls -la
-          find ~ -name ".npmrc" 
-          ls -la ~/
-          cat /home/runner/.nvm/.npmrc
-        #   cat /home/runner/work/_temp/.npmrc
-
-    #   - run: npm publish
-    #     env:
-    #       NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          cat .npmrc
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
