@@ -1,5 +1,9 @@
 {
   "name": "web-app-react",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lehai2909/argocd-app.git"
+  },
   "private": true,
   "version": "0.0.1",
   "type": "module",
