@@ -28,7 +28,7 @@ jobs:
           find ~ -name ".npmrc" 
           ls -la ~/
           cat /home/runner/.nvm/.npmrc
-          cat /home/runner/work/_temp/.npmrc
+        #   cat /home/runner/work/_temp/.npmrc
 
     #   - run: npm publish
     #     env:
