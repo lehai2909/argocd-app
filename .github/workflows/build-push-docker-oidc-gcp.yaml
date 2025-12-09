@@ -54,7 +54,7 @@ jobs:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@0.33.1
         with:
-          image-ref: 'asia-southeast1-docker.pkg.dev/heroic-night-453607-n0/web-app-repository/frontend:${VERSION}'
+          image-ref: 'asia-southeast1-docker.pkg.dev/heroic-night-453607-n0/web-app-repository/frontend:${{ env.VERSION }}'
           format: 'table'
           exit-code: '1'
           ignore-unfixed: true
