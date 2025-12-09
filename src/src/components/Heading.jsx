@@ -1,5 +1,5 @@
-import React from 'react'
-import "./Heading.css"
+import React from "react";
+import "./Heading.css";
 
 function Heading() {
   function handleClick(props) {
@@ -80,4 +80,3 @@ function Heading() {
   );
 }
 export default Heading;
-
