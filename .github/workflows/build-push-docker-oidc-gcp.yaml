@@ -48,11 +48,18 @@ jobs:
           docker build \
             --tag "${DOCKER_TAG}" \
             .
-            
-          docker scout cves "${DOCKER_TAG}"
 
           docker push "${DOCKER_TAG}"
-
+          
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@0.33.1
+        with:
+          image-ref: 'asia-southeast1-docker.pkg.dev/heroic-night-453607-n0/web-app-repository/frontend:${VERSION}'
+          format: 'table'
+          exit-code: '1'
+          ignore-unfixed: true
+          vuln-type: 'os,library'
+          severity: 'CRITICAL,HIGH'
   #     - name: Repository Dispatch
   #       uses: peter-evans/repository-dispatch@v3
   #       with:
